@@ -16,7 +16,7 @@ import Button from "./components/button";
 import { styles } from "../assets/styles/styles";
 import { variables } from "../assets/styles/variables";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   //Input variables
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -88,11 +88,7 @@ const Login = () => {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.socialButton}>
-              <Ionicons
-                name="logo-apple"
-                size={32}
-                color={variables.pinball}
-              />
+              <Ionicons name="logo-apple" size={32} color={variables.pinball} />
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.socialButton}>
@@ -105,7 +101,10 @@ const Login = () => {
           </View>
         </View>
         <View>
-          <TouchableOpacity style={[styles.textCenter, styles.marginBottom25]}>
+          <TouchableOpacity
+            style={[styles.textCenter, styles.marginBottom25]}
+            onPress={() => navigation.navigate("Welcome")}
+          >
             <Text style={styles.smallText}>Back</Text>
           </TouchableOpacity>
         </View>
