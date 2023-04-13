@@ -44,6 +44,49 @@ const styles = StyleSheet.create({
   marginBottom25: {
     marginBottom: 25,
   },
+  marginBottom10: {
+    marginBottom: 10,
+  },
+  h1: {
+    fontFamily: "Montserrat-Bold",
+    fontSize: 32,
+    color: variables.white,
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: variables.pinball,
+    paddingHorizontal: 16,
+    paddingVertical: 13,
+    color: variables.pinball,
+    borderRadius: 6,
+  },
+  textRight: {
+    alignSelf: "flex-end",
+  },
+  smallText: {
+    fontSize: 12,
+    fontFamily: "Montserrat-Regular",
+    color: variables.pinball,
+  },
+  bottomAuthBlock: {
+    justifyContent: "space-between",
+  },
+  socialGroup: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    marginTop: 10,
+    marginBottom: 50
+  },
+  socialButton: {
+    width: 50,
+    height: 50,
+    borderRadius: "100%",
+    marginHorizontal: 12.5,
+    backgroundColor: variables.socialGrey,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 export { styles };
