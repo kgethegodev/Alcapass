@@ -7,6 +7,7 @@ const variables = {
     "tomatoFrog" : "#ff4647",
     "white" : "#FFF",
     "black" : "#000",
+    "socialGrey" : "#3A3A3A",
 }
 
 export {variables};
