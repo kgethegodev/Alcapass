@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   socialButton: {
     width: 50,
     height: 50,
-    borderRadius: "100%",
+    borderRadius: 50/2,
     marginHorizontal: 12.5,
     backgroundColor: variables.socialGrey,
     justifyContent: "center",
