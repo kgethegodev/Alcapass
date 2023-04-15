@@ -1,4 +1,4 @@
-import React, { useState, createRef } from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -10,8 +10,6 @@ import {
 
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-import Button from "./components/button";
-
 //Adding stylesheet
 import { styles } from "../assets/styles/styles";
 import { variables } from "../assets/styles/variables";
@@ -19,10 +17,6 @@ import { variables } from "../assets/styles/variables";
 const Login = ({ navigation }) => {
   //Input variables
   const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-
-  //References
-  const passwordRef = createRef();
 
   return (
     <View style={styles.container}>
@@ -37,34 +31,15 @@ const Login = ({ navigation }) => {
       >
         <TextInput
           style={[styles.textInput, styles.marginBottom25]}
-          placeholder="username or email."
+          placeholder="phone number or email."
           placeholderTextColor={variables.pinball}
           onChangeText={(newName) => setName(newName)}
           keyboardType="email-address"
           returnKeyType="next"
-          onSubmitEditing={() =>
-            passwordRef.current && passwordRef.current.focus()
-          }
+          onSubmitEditing={Keyboard.dismiss}
           blurOnSubmit={false}
           defaultValue={name}
         />
-
-        <TextInput
-          style={[styles.textInput, styles.marginBottom10]}
-          placeholder="password."
-          placeholderTextColor={variables.pinball}
-          onChangeText={(newPassword) => setPassword(newPassword)}
-          onSubmitEditing={Keyboard.dismiss}
-          ref={passwordRef}
-          keyboardType="default"
-          returnKeyType="next"
-          secureTextEntry={true}
-          blurOnSubmit={false}
-          defaultValue={password}
-        />
-        <TouchableOpacity style={[styles.textRight, styles.marginBottom25]}>
-          <Text style={styles.smallText}>Forgot your password?</Text>
-        </TouchableOpacity>
 
         <TouchableOpacity
           style={[styles.button, styles.bgBoogieBlast, styles.marginBottom25]}
