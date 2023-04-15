@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Text,
   View,
@@ -6,9 +6,15 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   TouchableOpacity,
+  Alert
 } from "react-native";
-
 import Ionicons from "@expo/vector-icons/Ionicons";
+
+//Firebase
+import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
+import { firebaseConfig } from "../config";
+import firebase from "firebase/compat/app";
+
 
 //Adding stylesheet
 import { styles } from "../assets/styles/styles";
@@ -16,7 +22,7 @@ import { variables } from "../assets/styles/variables";
 
 const Login = ({ navigation }) => {
   //Input variables
-  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   return (
     <View style={styles.container}>
@@ -31,14 +37,14 @@ const Login = ({ navigation }) => {
       >
         <TextInput
           style={[styles.textInput, styles.marginBottom25]}
-          placeholder="phone number or email."
+          placeholder="phone number."
           placeholderTextColor={variables.pinball}
-          onChangeText={(newName) => setName(newName)}
-          keyboardType="email-address"
+          onChangeText={(newPhoneNumber) => setPhoneNumber(newPhoneNumber)}
+          keyboardType="numeric"
           returnKeyType="next"
           onSubmitEditing={Keyboard.dismiss}
           blurOnSubmit={false}
-          defaultValue={name}
+          defaultValue={phoneNumber}
         />
 
         <TouchableOpacity
