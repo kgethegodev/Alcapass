@@ -6,15 +6,8 @@ import {
   KeyboardAvoidingView,
   Keyboard,
   TouchableOpacity,
-  Alert
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-
-//Firebase
-import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
-import { firebaseConfig } from "../config";
-import firebase from "firebase/compat/app";
-
 
 //Adding stylesheet
 import { styles } from "../assets/styles/styles";
@@ -22,7 +15,9 @@ import { variables } from "../assets/styles/variables";
 
 const Login = ({ navigation }) => {
   //Input variables
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+  const passwordRef = useRef();
 
   return (
     <View style={styles.container}>
@@ -37,14 +32,27 @@ const Login = ({ navigation }) => {
       >
         <TextInput
           style={[styles.textInput, styles.marginBottom25]}
-          placeholder="phone number."
+          placeholder="email or username."
           placeholderTextColor={variables.pinball}
-          onChangeText={(newPhoneNumber) => setPhoneNumber(newPhoneNumber)}
-          keyboardType="numeric"
+          onChangeText={(newUser) => setUser(newUser)}
+          keyboardType="email"
           returnKeyType="next"
+          onSubmitEditing={() => {passwordRef.focus()}}
+          blurOnSubmit={false}
+          defaultValue={user}
+        />
+       
+        <TextInput
+          style={[styles.textInput, styles.marginBottom25]}
+          ref={passwordRef}
+          placeholder="password."
+          placeholderTextColor={variables.pinball}
+          onChangeText={(newPassword) => setPassword(newPassword)}
+          keyboardType="default"
           onSubmitEditing={Keyboard.dismiss}
           blurOnSubmit={false}
-          defaultValue={phoneNumber}
+          defaultValue={password}
+          secureTextEntry={true}
         />
 
         <TouchableOpacity
